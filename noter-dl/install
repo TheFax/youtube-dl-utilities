@@ -1,8 +1,10 @@
 #!/bin/bash
 
 #il pacchetto requests non è presente per default
-apt-get install python3-requests
-apt-get install ffmpeg
+apt-get --assume-yes install python3-requests
+
+#il pacchetto ffmpeg non è presente per default
+apt-get --assume-yes install ffmpeg
 
 #il pacchetto youtube-dl non è presente per default
 wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
