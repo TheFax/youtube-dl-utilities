@@ -1,4 +1,4 @@
-#!/usr/bin/python3.6
+#!/usr/bin/python3
 
 import settings
 import requests
@@ -14,9 +14,13 @@ def main():
         print("[ERR] impossibile contattare il server contenente la lista json")
         exit(-1)
 
+    if r.text=="":
+        print("[INFO] Nessuna nota da analizzare")
+        exit(0)
+
     values=r.json()
     #print(values)
-    
+
     for x in range(len(values)):
         print("\n")
         #print("ID {} - Analisi della nota".format(values[x]['ID']))
