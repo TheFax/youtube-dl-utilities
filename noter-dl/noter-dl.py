@@ -65,7 +65,7 @@ def download(youtubeLink, command):
 
     print("[INFO] Download del link: {}".format(youtubeLink))
     cmd = command.copy()
-    cmd.append(youtubeLink)
+    cmd.append(chr(34)+youtubeLink+chr(34))
     try:
         #print (cmd)
         res = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
