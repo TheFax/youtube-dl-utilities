@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python3.6
 
 import settings
 import requests
@@ -14,10 +14,6 @@ def main():
         print("[ERR] impossibile contattare il server contenente la lista json")
         exit(-1)
 
-    if r.text=="":
-        print("[INFO] Nessuna nota da analizzare")
-        exit(0)
-
     values=r.json()
     #print(values)
 
@@ -28,12 +24,12 @@ def main():
             print("ID {} - Sarà scaricato l'audio alla massima qualità".format(values[x]['ID']))
             status = download(values[x]['content'], settings.config['COMMAND_BEST_AUDIO'])
             feedbackNote(values[x]['ID'], status)
-                
+
         elif values[x]['title'] == "v":
             print("ID {} - Audio e video saranno scaricati e muxati insieme alla massima qualità".format(values[x]['ID']))
             status = download(values[x]['content'], settings.config['COMMAND_BEST_VIDEO'])
             feedbackNote(values[x]['ID'], status)
-                
+
         elif values[x]['title'] == "b":
             print("ID {} - Sarà scaricato l'audio (massima qualità) e anche il video (massima qualità)".format(values[x]['ID']))
             status = download(values[x]['content'], settings.config['COMMAND_BEST_AUDIO'])
@@ -47,7 +43,7 @@ def main():
 
         else:
             print("ID {} - La nota sarà ignorata poichè non sembra diretta a questo script".format(values[x]['ID']))
-            
+
     exit(0)
 
 def feedbackNote(identifier, status):
@@ -59,14 +55,13 @@ def deleteNote(identifier):
     r = requests.get(link)
 
 def download(youtubeLink, command):
-    if len(youtubeLink) == 11:
-        print("[INFO] Il link fornito verrà normalizzato col prefisso YouTube.")
-        youtubeLink = "https://www.youtube.com/watch?v=" + youtubeLink
-    if len(youtubeLink) > 43:
-        print("[INFO] Il link fornito verrà ridotto al solo link fondamentale.")
-        youtubeLink = youtubeLink[0:youtubeLink.find("&")]
+    #if len(youtubeLink) == 11:
+    #    print("[INFO] Il link fornito verrà normalizzato col prefisso YouTube.")
+    #    youtubeLink = "https://www.youtube.com/watch?v=" + youtubeLink
+    #if len(youtubeLink) > 43:
+    #    print("[INFO] Il link fornito verrà ridotto al solo link fondamentale.")
+    #    youtubeLink = youtubeLink[0:youtubeLink.find("&")]
 
-    
     print("[INFO] Download del link: {}".format(youtubeLink))
     cmd = command.copy()
     cmd.append(youtubeLink)
@@ -79,7 +74,7 @@ def download(youtubeLink, command):
         exit(-1)
 
     res.wait()
-    
+
     output = res.stdout.read()
     #In questo punto del programma, output è una lista e contiene riga per riga
     #  tutte le info ritornate da youtube-dl
