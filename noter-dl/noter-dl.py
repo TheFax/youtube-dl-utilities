@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import settings
-import web-settings
+import web_settings
 import requests
 import subprocess
 

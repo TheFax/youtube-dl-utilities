@@ -4,8 +4,8 @@
 cd "${0%/*}"
 
 #Scarico l'ultima versione dello script
-wget https://github.com/TheFax/youtube-dl-utilities/raw/master/noter-dl/noter-dl.py
-wget https://github.com/TheFax/youtube-dl-utilities/raw/master/noter-dl/settings.py
+wget -q https://github.com/TheFax/youtube-dl-utilities/raw/master/noter-dl/noter-dl.py -O noter-dl.py
+wget -q https://github.com/TheFax/youtube-dl-utilities/raw/master/noter-dl/settings.py -O settings.py
 
 #Rendo eseguibile lo script
 chmod a+rx ./noter-dl.py
