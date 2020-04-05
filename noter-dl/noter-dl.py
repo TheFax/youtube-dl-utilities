@@ -9,7 +9,7 @@ GOOD=0
 FAIL=-1
 
 def main():
-    r = requests.get(settings.web_config['JSON_LINK'])
+    r = requests.get(web_settings.web_config['JSON_LINK'])
     if r.status_code != 200:
         #r.status_code conterrà 200 se la richiesta è andata a buon fine
         print("[ERR] impossibile contattare il server contenente la lista json")
@@ -52,7 +52,7 @@ def feedbackNote(identifier, status):
         deleteNote(identifier)
 
 def deleteNote(identifier):
-    link = settings.web_config['DEL_LINK'] + str(identifier)
+    link = web_settings.web_config['DEL_LINK'] + str(identifier)
     r = requests.get(link)
 
 def download(youtubeLink, command):
