@@ -61,6 +61,9 @@ def deleteNote(identifier):
     r = requests.get(link)
 
 def download(youtubeLink, command):
+    #print (youtubeLink)
+    #print (command)
+
     #if len(youtubeLink) == 11:
     #    print("[INFO] Il link fornito verrà normalizzato col prefisso YouTube.")
     #    youtubeLink = "https://www.youtube.com/watch?v=" + youtubeLink
@@ -70,7 +73,10 @@ def download(youtubeLink, command):
 
     print("[INFO] Download del link: {}".format(youtubeLink))
     cmd = command.copy()
-    cmd.append(chr(34)+youtubeLink+chr(34))
+    cmd.append(chr(34))
+    cmd.append(youtubeLink)
+    cmd.append(chr(34))
+
     try:
         #print (cmd)
         res = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -85,6 +91,8 @@ def download(youtubeLink, command):
     #In questo punto del programma, output è una lista e contiene riga per riga
     #  tutte le info ritornate da youtube-dl
     #TODO: analizzare il ritorno di youtube-dl alla ricerca di errori o info utili
+
+    #print(output)
 
     if res.returncode !=0:
         print("[ERR] Impossibile scaricare {} - Returncode: {}".format(youtubeLink,res.returncode))
