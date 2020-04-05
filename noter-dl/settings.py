@@ -14,4 +14,11 @@ config = dict(
     COMMAND_STANDARD   = ['youtube-dl',\
                           '-f','best',\
                           '-o','./output/%(title)s - %(id)s.%(ext)s'],
+
+    COMMAND_PLAYLIST   = ['youtube-dl',\
+                          '-f','best',\
+                          '-i',\
+                          '--yes-playlist',\
+                          '-o','./output/%(title)s - %(id)s.%(ext)s'],
+
 )

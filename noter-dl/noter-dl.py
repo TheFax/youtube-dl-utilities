@@ -41,6 +41,11 @@ def main():
             print("ID {} - Sarà scaricato il video in formato standard".format(values[x]['ID']))
             status = download(values[x]['content'], settings.config['COMMAND_STANDARD'])
             feedbackNote(values[x]['ID'], status)
+        
+        elif values[x]['title'] == "l":
+            print("ID {} - Sarà scaricata l'intera playlist".format(values[x]['ID']))
+            status = download(values[x]['content'], settings.config['COMMAND_PLAYLIST'])
+            feedbackNote(values[x]['ID'], status)
 
         else:
             print("ID {} - La nota sarà ignorata poichè non sembra diretta a questo script".format(values[x]['ID']))
