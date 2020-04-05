@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#il pacchetto requests non è presente per default
+apt-get --assume-yes install python3-requests
+
+#il pacchetto ffmpeg non è presente per default
+apt-get --assume-yes install ffmpeg
+
+#il pacchetto youtube-dl non è presente per default
+wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
+chmod a+rx /usr/local/bin/youtube-dl
+
+#scarico gli script necessari
+wget https://raw.githubusercontent.com/TheFax/youtube-dl-utilities/master/noter-dl/example_web_settings.py
+wget https://raw.githubusercontent.com/TheFax/youtube-dl-utilities/master/noter-dl/settings.py
+wget https://raw.githubusercontent.com/TheFax/youtube-dl-utilities/master/noter-dl/noter-dl.py
+chmod a+rx noter-dl.py
+chmod a+rx noter-dl.sh

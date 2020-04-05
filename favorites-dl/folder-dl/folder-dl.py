@@ -1,4 +1,4 @@
-#!/usr/bin/python3.6
+#!/usr/bin/python3
 
 import sys
 import os
@@ -6,12 +6,14 @@ import subprocess
 import argparse    #https://docs.python.org/2/howto/argparse.html
 
 # --audio-quality  -->   0 è il massimo
+
 COMMAND_AUDIO = ['youtube-dl', \
                  '-f','bestaudio', \
                  '--extract-audio', \
                  '--audio-format','mp3', \
                  '--audio-quality','0',\
                  '-k']
+                 
 COMMAND_VIDEO = ['youtube-dl,',\
                  '-f','bestvideo+bestaudio']
 
@@ -31,13 +33,13 @@ def main():
 
    #valuto gli argomenti passati allo script
    if args.type == "a":
-      print("[INFO] Si è scelto di scaricare l'audio alla massima qualita'")
+      print("[INFO] Si è scelto di scaricare l'audio")
       command = COMMAND_AUDIO.copy()
    elif args.type == "v":
-      print("[INFO] Si è scelto di scaricare il video alla massima qualita'")
+      print("[INFO] Si è scelto di scaricare il video")
       command = COMMAND_VIDEO.copy()
    else:
-      print("Per default si scarica l'audio alla massima qualita'")
+      print("Per default si scarica l'audio")
       print("Per scaricare il video, vedere la guida argomenti: -h")
       command = COMMAND_AUDIO.copy()
    

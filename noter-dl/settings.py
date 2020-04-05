@@ -1,11 +1,4 @@
-#Rename this file to: settings.py and edit it.
-
 config = dict(
-
-    JSON_LINK = "https://xxxx/index.php?list=1",
-
-    DEL_LINK = "https://xxxx/index.php?del=",
-
     COMMAND_BEST_AUDIO = ['youtube-dl', \
                           '-f','bestaudio', \
                           '--extract-audio', \
@@ -21,5 +14,4 @@ config = dict(
     COMMAND_STANDARD   = ['youtube-dl',\
                           '-f','best',\
                           '-o','./output/%(title)s - %(id)s.%(ext)s'],
-
 )
