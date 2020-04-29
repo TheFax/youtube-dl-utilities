@@ -11,7 +11,17 @@ wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
 chmod a+rx /usr/local/bin/youtube-dl
 
 #scarico gli script necessari
-wget -q https://raw.githubusercontent.com/TheFax/youtube-dl-utilities/master/noter-dl/example_web_settings.py -O web_settings.py
+echo -n "Would you like to (O)verwrite settings or (K)eep your original file? (o/k): "
+read answer
+if [ "$answer" != "${answer#[Oo]}" ] ;then
+    echo "Download and overwrite settings file"
+    if [-f web_settings.py] ; then
+        mv web_settings.py backup_web_settings.py
+    fi
+    wget -q https://raw.githubusercontent.com/TheFax/youtube-dl-utilities/master/noter-dl/example_web_settings.py -O web_settings.py    
+else
+    echo "Keeping your configuration file"
+fi
 wget -q https://raw.githubusercontent.com/TheFax/youtube-dl-utilities/master/noter-dl/settings.py -O settings.py
 wget -q https://raw.githubusercontent.com/TheFax/youtube-dl-utilities/master/noter-dl/noter-dl.py -O noter-dl.py
 wget -q https://raw.githubusercontent.com/TheFax/youtube-dl-utilities/master/noter-dl/noter-dl.sh -O noter-dl.sh
