@@ -51,6 +51,18 @@ def main():
             status = download(values[x]['content'], settings.config['COMMAND_STANDARD'])
             feedbackNote(values[x]['ID'], status)
         
+        #720
+        elif values[x]['title'] == "720":
+            print("ID {} - Sarà scaricato il video in formato standard".format(values[x]['ID']))
+            status = download(values[x]['content'], settings.config['COMMAND_720'])
+            feedbackNote(values[x]['ID'], status)
+        
+        #1080
+        elif values[x]['title'] == "1080":
+            print("ID {} - Sarà scaricato il video in formato standard".format(values[x]['ID']))
+            status = download(values[x]['content'], settings.config['COMMAND_1080'])
+            feedbackNote(values[x]['ID'], status)
+
         #Lista
         elif values[x]['title'] == "l":
             print("ID {} - Sarà scaricata l'intera playlist".format(values[x]['ID']))
