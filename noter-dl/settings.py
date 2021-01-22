@@ -13,6 +13,17 @@ config = dict(
                             '-f','bestvideo+bestaudio',\
                             '-o','./output/%(title)s - %(id)s.%(ext)s'],
 
+    COMMAND_720 = ['youtube-dl',\
+                            '--socket-timeout','15', \
+                            '-f','136+251',\
+                            '-o','./output/%(title)s - %(id)s.%(ext)s'],
+
+    COMMAND_1080 = ['youtube-dl',\
+                            '--socket-timeout','15', \
+                            '-f','137+251',\
+                            '-o','./output/%(title)s - %(id)s.%(ext)s'],
+
+    
     COMMAND_STANDARD   = ['youtube-dl',\
                             '--socket-timeout','15', \
                             '-f','best',\
